@@ -3,9 +3,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Brand </a>
+        <a class="nav-link-right" href="#">Brand </a>
       </li>
-      <li class="nav-item left">
+      <li class="nav-item-left">
         <a class="nav-link" href="#" ><i class="fa fa-shopping-cart"></i> Shopping Cart</a>
       </li>
       <li class="nav-item dropdown">
