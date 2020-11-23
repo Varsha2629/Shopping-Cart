@@ -22,4 +22,16 @@ use App\Http\Controllers\ProductController;
     Route::get('/', [ProductController::class, 'getIndex',
     'as' => 'product.index'
 ]);   
+
+Route::get('/signup',  [ 
+    'user' => 'UserController@postSignup',
+    'as' => 'user.signup'   
     
+]);
+  
+
+Route::post('/signup',  [ 
+    'user' => 'UserController@postSignup',
+    'as' => 'user.signup'   
+    
+]);

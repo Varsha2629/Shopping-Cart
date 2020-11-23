@@ -14,7 +14,7 @@
           <div class="ndropdow-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" href="#">User Account</a>
             <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Logout</a>
+            <a class="dropdown-item" href="#">Logout</a>
         </div>
       </li>
       </li> 
