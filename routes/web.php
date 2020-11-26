@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,19 +20,24 @@ use App\Http\Controllers\ProductController;
 //     'as' => 'products.index'
 //     ]);
 
-    Route::get('/', [ProductController::class, 'getIndex',
+    Route::get('/', [ProductController::class, '@getIndex',
     'as' => 'product.index'
 ]);   
 
-Route::get('/signup',  [ 
-    'user' => 'UserController@postSignup',
-    'as' => 'user.signup'   
-    
-]);
-  
+Route::get('/signup', [UserController::class, '@getSignup',
+    'as' => 'user.signup'
+]); 
 
-Route::post('/signup',  [ 
-    'user' => 'UserController@postSignup',
-    'as' => 'user.signup'   
-    
-]);
+Route::post('/signup', [UserController::class, '@postSignup',
+    'as' => 'user.signup'
+]); 
+
+    // Route::get('/signup', [ 
+    //   'uses' => 'UserController@getSignup',
+    //   'as' => 'user.signup'
+    //   ]);
+
+    // Route::post('/signup', [ 
+    //     'uses' => 'UserController@postSignup',
+    //     'as' => 'user.signup'
+    //     ]);      
