@@ -20,24 +20,27 @@ use App\Http\Controllers\UserController;
 //     'as' => 'products.index'
 //     ]);
 
-    Route::get('/', [ProductController::class, '@getIndex',
-    'as' => 'product.index'
+    Route::get('/', [ProductController::class, 'getIndex',
+//   'as' => 'product.index'
 ]);   
 
-Route::get('/signup', [UserController::class, '@getSignup',
-    'as' => 'user.signup'
+Route::get('/signup', [UserController::class, 'getSignup',
+ // 'as' => 'user.signup'
 ]); 
 
-Route::post('/signup', [UserController::class, '@postSignup',
-    'as' => 'user.signup'
+Route::post('/signup', [UserController::class, 'postSignup',
+ // 'as' => 'user.signup'
 ]); 
 
-    // Route::get('/signup', [ 
-    //   'uses' => 'UserController@getSignup',
-    //   'as' => 'user.signup'
-    //   ]);
+Route::get('/signin', [UserController::class, 'getSignin',
+ // 'as' => 'user.signin'
+]); 
 
-    // Route::post('/signup', [ 
-    //     'uses' => 'UserController@postSignup',
-    //     'as' => 'user.signup'
-    //     ]);      
+Route::post('/signin', [UserController::class, 'postSignin',
+ // 'as' => 'user.signin'
+]); 
+
+Route::get('/user/profile', [UserController::class, 'getProfile',
+  //'as' => 'user.profile'
+]); 
+    

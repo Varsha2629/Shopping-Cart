@@ -15,9 +15,8 @@
     RewriteRule ^ %1 [L,R=301]
 
    # Send Requests To Front Controller...
-    RewriteEngine On
+    
     # Removes index.php from ExpressionEngine URLs  
-
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
