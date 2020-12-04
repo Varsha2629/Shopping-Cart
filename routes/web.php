@@ -20,7 +20,7 @@ use App\Http\Controllers\UserController;
 //     'as' => 'products.index'
 //     ]);
 
-    Route::get('/', [ProductController::class, 'getIndex',
+Route::get('/', [ProductController::class, 'getIndex',
 //   'as' => 'product.index'
 ]);   
 
@@ -28,6 +28,8 @@ Route::get('/signup', [UserController::class, 'getSignup',
  // 'as' => 'user.signup'
 ]); 
 
+Route::group(['prefix' => 'user'], function() {
+  
 Route::post('/signup', [UserController::class, 'postSignup',
  // 'as' => 'user.signup'
 ]); 
@@ -40,7 +42,11 @@ Route::post('/signin', [UserController::class, 'postSignin',
  // 'as' => 'user.signin'
 ]); 
 
-Route::get('/user/profile', [UserController::class, 'getProfile',
+Route::get('/profile', [UserController::class, 'getProfile',
   //'as' => 'user.profile'
 ]); 
+Route::get('/Logout', [UserController::class, 'getLogout',
+
+]);
     
+});

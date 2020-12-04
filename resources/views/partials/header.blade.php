@@ -16,7 +16,7 @@
                         <li><a href="{{ URL('/signin') }}">Sign In</a></li>
                         
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="{{ URl('/logout)}}">Logout</a></li>
                     </ul>
                 </li>
 
