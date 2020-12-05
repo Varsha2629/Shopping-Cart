@@ -59,7 +59,8 @@ class UserController extends Controller
 
     public function getLogout() {
          Auth::logout();
-         return redirect()->back();
+         //return redirect()->back();
+         return redirect()->action([ProductController::class, 'getIndex']);
     }
     
 }   

@@ -11,7 +11,7 @@
             @endforeach
         </div>
         @endif
-        <form action="{{ URL('/signup') }}" method="post">
+        <form action="{{ URL('user/signup') }}" method="post">
             <div class="form-group">
                 <label for="email">E-Mail</label>
                 <input type="text" id="email" name="email" class="form-control">

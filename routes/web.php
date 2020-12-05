@@ -21,32 +21,39 @@ use App\Http\Controllers\UserController;
 //     ]);
 
 Route::get('/', [ProductController::class, 'getIndex',
-//   'as' => 'product.index'
+     'as' => 'product.index'
 ]);   
 
-Route::get('/signup', [UserController::class, 'getSignup',
- // 'as' => 'user.signup'
-]); 
-
 Route::group(['prefix' => 'user'], function() {
-  
-Route::post('/signup', [UserController::class, 'postSignup',
- // 'as' => 'user.signup'
-]); 
-
-Route::get('/signin', [UserController::class, 'getSignin',
- // 'as' => 'user.signin'
-]); 
-
-Route::post('/signin', [UserController::class, 'postSignin',
- // 'as' => 'user.signin'
-]); 
-
-Route::get('/profile', [UserController::class, 'getProfile',
-  //'as' => 'user.profile'
-]); 
-Route::get('/Logout', [UserController::class, 'getLogout',
-
-]);
+  Route::group(['middleware' => 'guest'], function() {
     
+    Route::get('/signup', [UserController::class, 'getSignup',
+     // 'as' => 'user.signup'
+       ]);   
+  
+     Route::post('/signup', [UserController::class, 'postSignup',
+     // 'as' => 'user.signup' 
+     ]); 
+
+     Route::get('/signin', [UserController::class, 'getSignin',
+     // 'as' => 'user.signin'
+     ]); 
+
+     Route::post('/signin', [UserController::class, 'postSignin',
+     // 'as' => 'user.signin'
+     
+    ]); 
+  });
+
+  Route::group(['middleware' => 'auth'], function() {
+    Route::get('/profile', [UserController::class, 'getProfile',
+      //'as' => 'user.profile'print("get signup");
+    ]); 
+ 
+    Route::get('/logout', [UserController::class, 'getLogout',
+
+    ]);
+
+  });
+     
 });

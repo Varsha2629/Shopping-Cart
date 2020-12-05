@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Brand</a>
+            <a class="navbar-brand" href="{{URL('/')}}">Brand</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -12,11 +12,11 @@
                  <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Management <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ URL('/signup') }}">Sign Up</a></li>
-                        <li><a href="{{ URL('/signin') }}">Sign In</a></li>
+                        <li><a href="{{ URL('/user/signup') }}">Sign Up</a></li>
+                        <li><a href="{{ URL('/user/signin') }}">Sign In</a></li>
                         
                         <li role="separator" class="divider"></li>
-                        <li><a href="{{ URl('/logout)}}">Logout</a></li>
+                        <li><a href="{{ URL('/user/logout')}}">Logout</a></li>
                     </ul>
                 </li>
 
