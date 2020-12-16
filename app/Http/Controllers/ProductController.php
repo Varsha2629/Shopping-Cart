@@ -6,6 +6,8 @@ use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Session;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class ProductController extends Controller
 {
@@ -34,8 +36,47 @@ class ProductController extends Controller
         if (!Session::has('cart')) {
             return view('shop.shopping-cart');
         }
-        $oldCart = session::get ('cart'); 
+        $oldCart = Session::get ('cart'); 
         $cart = new Cart($oldCart);
         return view('shop.shopping-cart', ['products' => $cart->items, 'totalPrice'=>$cart->totalPrice]);
     }
+    public function getCheckout(){
+        if (!Session::has('cart')) {
+            return view('shop.shopping-cart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $total = $cart->totalPrice;
+        return view('shop.checkout', ['total' => $total]);
+    }
+    public function postCheckout(Request $request)
+    {
+        if (!Session::has('cart')) {
+            return redirect()->Route('shop.shoppingCart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        print($cart->totalPrice);
+
+        Stripe::setApikey('sk_test_51HwXrqCI7HY6MLC4V5IGTHjFeO0NSsWgf6ct456RUoHxFJURWVSeiC0JNNlpB8u2E35RFqCUlgbxFWp9V6FQpmrO00pdGfiAme');
+        try { 
+            // create charge 4242424242424242
+            //Charge::create(array(   
+            print($request->input('stripeToken')  );      
+            Charge::create([                          
+                "amount" => $cart->totalPrice * 100,
+                "currency" => "usd",
+                "source" => $request->input('stripeToken'), 
+                "description" => "Test Charge"
+            ]);
+        } 
+        
+        catch (\Exception $e) {
+            return redirect()->action([ProductController::class, 'getCheckout'])->with('error', $e->getMessage());
+        }
+        
+        Session ::forget('cart');
+        return redirect()->action([ProductController::class, 'getIndex'])->with('success', 'Successfully purchased products!');
+    }
+
 }

@@ -33,6 +33,15 @@ Route::get('/shopping-cart', [ProductController::class,'getCart',
 
 ]);
 
+Route::get('/checkout', [ProductController::class,'getCheckout',
+  'as' => 'product.checkout'
+
+]);
+
+Route::post('/checkout', [ProductController::class,'postCheckout',
+  'as' => 'product.checkout'
+
+]);
 Route::group(['prefix' => 'user'], function() {
   Route::group(['middleware' => 'guest'], function() {
     
