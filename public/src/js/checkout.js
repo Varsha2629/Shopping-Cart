@@ -22,7 +22,7 @@ card.on('change', function(event) {
   });
   //Handle form submission
 
-$("#form-checkout").on('click', function(event) {
+$("#form-buy").on('click', function(event) {
   
   //$('#payment-form').addClass('hidden');
    event.preventDefault();
