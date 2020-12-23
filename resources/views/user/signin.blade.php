@@ -11,7 +11,7 @@
             @endforeach
         </div>
         @endif
-        <form action="{{ URL('user/signin') }}" method="post">
+        <form action="{{ URL('/user/signin') }}" method="post">
             <div class="form-group">
                 <label for="email">E-Mail</label>
                 <input type="text" id="email" name="email" class="form-control">
@@ -22,8 +22,8 @@
             </div>
             <button type="submit" class="btn btn-primary">Sign In</button>
             {{ csrf_field() }}
-            <p>Don't have an account? <a href="{{ route('user.signup)}}"></p>
-        </form>
+           </form>
+           <p>Don't have an account? <a href="{{ URL('/user/signup') }}">Sign up instead!</a></p>
     </div>
 </div>
 @endsection

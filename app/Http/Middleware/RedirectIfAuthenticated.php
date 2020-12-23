@@ -6,7 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Session;
 class RedirectIfAuthenticated
 {
     /**
@@ -17,16 +17,17 @@ class RedirectIfAuthenticated
      * @param  string|null  ...$guards
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, ...$guards)
-    {
-        $guards = empty($guards) ? [null] : $guards;
-
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect()->route('product.index');
+    public function handle(Request $request, Closure $next, $guard = null)
+    {      
+            if (Auth::guard($guard)->guest()) {
+                if($request -> ajax() || $request -> wantsJson()) {
+                    return response('Unauthorised.', 401);
+                } 
+                else {
+                    return $next($request);
+                
             }
-        }
-
+    
         return $next($request);
     }
 }

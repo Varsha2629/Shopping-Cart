@@ -32,18 +32,20 @@ Route::get('/shopping-cart', [ProductController::class,'getCart',
   'as' => 'product.shoppingCart'
 
 ]);
+Route::group(['middleware' => 'auth'], function() {
 
-Route::get('/checkout', [ProductController::class,'getCheckout',
-  'as' => 'product.checkout',
- 'middleware' => 'auth'
+  Route::get('/checkout', [ProductController::class,'getCheckout',
+    'as' => 'product.checkout',
+  //'middleware' => 'auth'
 
-]);
+  ]);
 
-Route::post('/checkout', [ProductController::class,'postCheckout',
-  'as' => 'product.checkout',
-    'middleware' => 'auth'
+  Route::post('/checkout', [ProductController::class,'postCheckout',
+    'as' => 'product.checkout',
+  // 'middleware' => 'auth'
 
-]);
+  ]);
+});
 
 Route::group(['prefix' => 'user'], function() {
   Route::group(['middleware' => 'guest'], function() {
