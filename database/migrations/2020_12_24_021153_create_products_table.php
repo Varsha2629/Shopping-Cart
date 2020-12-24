@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *
